@@ -44,10 +44,5 @@ class User extends Authenticatable
         return $this->hasMany(Question::class);
 
     }
-    //mutator for title attribute
-    public function setTitleAttribute($value){
-        $this->attributes['title'] = $value;
-        $this->attributes['slug'] = Str::slug($value); //convet string into a slug
-
-    }
+  
 }
