@@ -21,8 +21,13 @@ class Question extends Model
     public function setTitleAttribute($value){
         $this->attributes['title'] = $value;
         $this->attributes['slug'] = Str::slug($value); //convet string into a slug
-
     }
-     
-
+     //define a question successor
+     public function getUrlAttribute(){
+         return route("questions.show",$this->id);
+     }
+     //define a successor tp create date
+     public function getCreatedDateAttribute(){
+         return $this->created_at->diffforHumans();
+     }
 }

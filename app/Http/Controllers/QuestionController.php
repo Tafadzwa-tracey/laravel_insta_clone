@@ -14,10 +14,11 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
-        $questions = Question::latest()->paginate(5);
-
+      
+        $questions = Question::with('user')->latest()->paginate(5);
+        //render method return the string content of the view
         return view('questions.index',compact('questions'));
+       
     }
 
     /**
